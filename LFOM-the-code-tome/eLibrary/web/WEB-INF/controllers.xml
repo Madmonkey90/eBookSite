@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation= "
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd" >
+    
+  <bean id="searchController" class="eLibrary.web.controllers.SearchController">
+    <property name="itemHandler">
+      <ref bean ="itemHandler"></ref>
+    </property>
+  </bean>
+  <bean id="accountPageController" class="eLibrary.web.controllers.AccountPageController">
+      <property name="userHandler">
+          <ref bean="userHandler"></ref>
+      </property>
+      <property name="itemHandler">
+      <ref bean ="itemHandler"></ref>
+    </property>
+  </bean>
+  <bean id="loginController" class="eLibrary.web.controllers.LoginController">
+  </bean>
+  <bean id="cartController" class="eLibrary.web.controllers.CartController">
+    <property name="itemHandler">
+      <ref bean ="itemHandler"></ref>
+    </property>
+  </bean>
+  <bean id="signUpController" class="eLibrary.web.controllers.SignUpController">
+      <property name="userHandler">
+        <ref bean ="userHandler"></ref>
+      </property>
+  </bean>
+  <bean id="mainPageController" class="eLibrary.web.controllers.MainPageController">
+    <property name="itemHandler">
+      <ref bean ="itemHandler"></ref>
+    </property>              
+    <property name="sessionFactory">
+      <ref bean ="sessionFactory"></ref>
+    </property>
+  </bean>  
+  <bean id="detailsController" class="eLibrary.web.controllers.DetailsController">
+    <property name="itemHandler">
+      <ref bean ="itemHandler"></ref>
+    </property>
+  </bean>
+  <bean id="bookSampleController" class="eLibrary.web.controllers.BookSampleController">
+    <property name="itemHandler">
+      <ref bean ="itemHandler"></ref>
+    </property>
+  </bean>
+
+  <bean id="accountItemsDisplayController" class="eLibrary.web.controllers.AccountItemsDisplayController">
+    <property name="itemHandler">
+      <ref bean ="itemHandler"></ref>
+    </property>
+    <property name="userHandler">
+        <ref bean ="userHandler"></ref>
+    </property>
+  </bean>
+
+    <bean id="adminDashController" class="eLibrary.web.controllers.AdminDashController">
+      <property name="userHandler">
+        <ref bean ="userHandler"></ref>
+      </property>
+      <property name="itemHandler">
+      <ref bean ="itemHandler"></ref>
+    </property>
+    <property name="metricsHandler">
+      <ref bean ="metricsHandler"></ref>
+    </property>
+  </bean>   
+</beans>

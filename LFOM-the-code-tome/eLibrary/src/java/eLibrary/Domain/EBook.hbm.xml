@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="eLibrary.Domain">
+    <class name="EBook" table="ebooks">
+        <id name="key" column="EBOOK_ID">
+        </id>
+        <property name="title" column="TITLE" />
+        <property name="publishDate" column="PUBLISHDATE" type="date" />
+        <many-to-one name="author" class="Author" lazy="false" fetch="select"
+                    column="AUTHOR_ID" not-null="true"/>
+        <property name="ISBN" column="ISBN" />
+        <property name="rating" column ="RATING" />
+        <property name="length" column="LENGTH" />
+        <property name="imgSrc" column="IMGSRC" />
+        <property name="publisher" column="PUBLISHER" />
+        <property name="checkouts" column="CHECKOUTS" />
+        <property name ="addedDate" column="ADDEDDATE" type="date"/>
+        <property name ="sampleSrc" column="SAMPLESRC" />
+        <property name ="description" column="DESCRIPTION" />
+        <property name ="genre" column="GENRE" />
+        <set name="wishlistRecords" inverse="true" cascade="all" lazy="false" fetch="select">
+            <key column="EBOOK_ID" not-null="true" />
+            <one-to-many class="WishlistRecord"/>
+        </set>
+    </class> 
+</hibernate-mapping>

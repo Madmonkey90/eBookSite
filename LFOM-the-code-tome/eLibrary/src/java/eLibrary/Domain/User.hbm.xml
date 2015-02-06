@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="eLibrary.Domain">
+    <class name="User" table="users">
+        <id name="key" column="USER_ID">
+        </id>
+        <property name="lastName" column="LASTNAME" />
+        <property name="firstName" column="FIRSTNAME" />
+        <property name="email" column="EMAIL" />
+        <property name="password" column="PASSWORD" />
+        <property name="enabled" column="ENABLED" />
+        <set name="userRole" table="user_roles" cascade="all" inverse="true" lazy="false" fetch="select">
+            <key column= "USER" not-null="true"/>
+            <one-to-many class="UserRole" />
+        </set>
+        <set name="checkedOut" table="checked_out" cascade="all" inverse="true" lazy="false" fetch="select">
+            <key column="USER_ID" not-null="true"/>
+            <one-to-many class="CheckoutRecord" />
+        </set>
+
+        <set name="heldItems" table="item_holds" cascade="all" inverse="true" lazy="false" fetch="select">
+            <key column="USER_ID" not-null="true"/>
+            <one-to-many class="ItemHold" />
+        </set>
+        <set name="wishlistRecords" inverse="true" cascade="all" lazy="false" fetch="select">
+            <key column="USER_ID" not-null="true" />
+            <one-to-many class="WishlistRecord"/>
+
+        </set>
+    </class> 
+</hibernate-mapping>

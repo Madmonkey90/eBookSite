@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="eLibrary.Domain">
+    <class name="ItemHold" table="item_holds">
+        <id name="key" column="HOLD_ID">
+        </id>
+        <many-to-one name="user" class="User" lazy="false" fetch="select" column="USER_ID" not-null="true"/>
+        <many-to-one name="ebook" class="EBook" lazy="false" fetch="select" column="EBOOK_ID" not-null="true"/>
+        <property name="timeLeft" column="TIMESTAMP"/>
+    </class> 
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.search.default.directory_provider">filesystem</property>
+    <property name="hibernate.search.default.indexBase">C:\lucene\indexes</property>
+    <mapping class="eLibrary.Domain.User" package="eLibrary.Domain" resource="eLibrary/Domain/User.hbm.xml"/>
+    <mapping class="eLibrary.Domain.Author" package="eLibrary.Domain" resource="eLibrary/Domain/Author.hbm.xml"/>
+    <mapping class="eLibrary.Domain.EBook" file="" jar="" package="eLibrary.Domain" resource="eLibrary/Domain/EBook.hbm.xml"/>
+    <mapping class="eLibrary.Domain.UserRole" package="eLibrary.Domain" resource="eLibrary/Domain/UserRole.hbm.xml"/>
+    <mapping class="eLibrary.Domain.CheckoutRecord" package="eLibrary.Domain" resource="eLibrary/Domain/CheckoutRecord.hbm.xml"/>
+    <mapping class="eLibrary.Domain.ItemHold" package="eLibrary.Domain" resource="eLibrary/Domain/ItemHold.hbm.xml"/>
+    <mapping class="eLibrary.Domain.Ticket" package="eLibrary.Domain" resource="eLibrary/Domain/Ticket.hbm.xml"/>
+    <mapping class="eLibrary.Domain.WishlistRecord" package="eLibrary.Domain" resource="eLibrary/Domain/WishlistRecord.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

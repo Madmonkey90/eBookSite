@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="eLibrary.Domain">
+    <class name="UserRole" table="user_roles">
+        <id name="key" column="KEY">
+        </id>
+        <many-to-one name="user" class="User" lazy="false" fetch="select" column="USER" not-null="true"/>
+        <property name="role" column="ROLE"/>
+    </class>
+</hibernate-mapping>

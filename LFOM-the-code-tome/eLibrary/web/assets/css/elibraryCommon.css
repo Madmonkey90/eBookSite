@@ -1,0 +1,77 @@
+body{
+    background-image: url("../seamlessPaper.png");
+    background-repeat: repeat;
+    margin: 110px 20px 10px;
+}
+.contentBackgroundWithAliceBlue
+{
+    border-radius: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    border-color: rgb(27,54,99);
+    border-style: solid;
+    border-width: 3px;
+}
+.navbar-input-group {
+  font-size: 0px; /*removes whitespace between button and input*/
+}
+.navbar-input-group input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.navbar-input-group .btn {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+}
+.navbar{
+    background-color: rgba(170,137,100,.9);
+}
+.navbar-inverse .navbar-nav>li>a
+{
+    color: white;
+}
+.navbar-inverse .navbar-nav>li:hover
+{
+    background-color: rgb(79,55,40);
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form
+{
+    border-color: rgba(170,137,100,.85);
+}
+
+div.footer{
+    position: fixed;
+    bottom: 0;
+    left: 7%;
+}
+
+#sidebar-wrapper{
+        display: block;
+        float: left;
+        margin-top:0px;
+        margin-left: -70px;
+        left: 70px;
+        width: 150px;
+        height:350px;
+        background-color: rgba(170,137,100,.4);
+        position: fixed;
+        z-index: 1000;
+      }
+      #sidebar-nav{
+        display: block;
+        float: left;
+        width: 150px;
+        list-style: none;
+        margin: 0;
+        padding: 0; 
+      }
+      .nav-pills .nav-stacked{
+          color: rgb(79,55,40);
+      }
+      #sidebar-nav>li>a{
+          color: white;
+      }
+      #sidebar-nav>li>:hover{
+          background-color: rgb(79,55,40);
+      }

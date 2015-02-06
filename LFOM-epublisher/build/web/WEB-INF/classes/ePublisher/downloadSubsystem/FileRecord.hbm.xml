@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ePublisher.downloadSubsystem">
+    <class name="FileRecord" table="filetypes">
+        <id name="filePath" column="FILEPATH"></id>
+        <property name="fileFormat" column="FILETYPE" />
+        <property name="bookId" column="EBOOK_ID" />
+        <property name="bookCover" column="BOOK_COVER" />
+        <property name="checkoutsLeft" column="CHECKOUTS_REM" />
+    </class> 
+</hibernate-mapping>

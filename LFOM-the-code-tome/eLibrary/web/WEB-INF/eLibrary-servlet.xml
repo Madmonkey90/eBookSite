@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation= "
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd" >
+    
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>          
+    <!-- Component-scan scans and registers all the controllers under the package -->
+    <context:component-scan base-package="eLibrary">
+		<context:include-filter type="aspectj"
+			expression="eLibrary.Aspectj.AuditAdvice" />
+    </context:component-scan>
+    <mvc:annotation-driven />
+    <!-- Mappings for static content like JS,CSS and so on -->
+    <mvc:resources mapping="/bootstrap-3.2.0-dist/**" location="/bootstrap-3.2.0-dist/**"  />  
+    <mvc:resources mapping="/assets/**" location="/assets/**"  />
+    <mvc:resources mapping="/books/**" location="/books/**" /> 
+    <mvc:resources mapping="/ePUBjs/**" location="/ePUBjs/**"  />
+    
+    <aop:aspectj-autoproxy/>
+
+	
+       
+    <import resource="handlers.xml"/>
+    <import resource="repos.xml"/>
+    <import resource="controllers.xml"/>
+    <import resource="persistence.xml"/>
+    <!-- JSP mapping -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:viewClass="org.springframework.web.servlet.view.JstlView"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />        
+</beans>

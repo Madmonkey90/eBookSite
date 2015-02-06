@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
+    
+    <security:http auto-config="true" use-expressions="true" access-denied-page="/403" disable-url-rewriting="true">
+        <!-- Restrict URLs based on role -->
+        <security:intercept-url pattern="/accountPage*" access="hasRole('ROLE_USER')" />
+        <security:intercept-url pattern="/admin*" access="hasRole('ROLE_ADMIN')" />
+        <!-- Override default login and logout pages -->
+        <security:form-login login-page="/login" 
+                             login-processing-url="/login.do"
+                             default-target-url="/mainpage" 
+                             authentication-failure-url="/login?error"
+                             username-parameter="username"     
+                             password-parameter="password"  />
+        <security:logout logout-url="/logout" logout-success-url="/login?logout" delete-cookies="JSESSIONID" invalidate-session="true"/>
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="userRoleHandler">
+            <security:password-encoder hash="sha-256"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>
